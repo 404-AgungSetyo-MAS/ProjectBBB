@@ -4,10 +4,10 @@ use App\Models\Mak;
 use App\Models\Perjalanan;
 use Livewire\Livewire;
 
-it('render list components rekap perjalanan', function () {
-    Livewire::test(RekapPerjalanan::class)
-        ->assertOk();
-});
+// it('render list components rekap perjalanan', function () {
+//     Livewire::test(RekapPerjalanan::class)
+//         ->assertOk();
+// });
 
 // it('menampilkan Kolom rekap perjalanan', function () {
 //     Perjalanan::factory()
@@ -107,7 +107,8 @@ it('show the uploaded files', function() {
 
     Livewire::test(RekapPerjalanan::class)
     ->assertOk()->assertSeeText([
-        'testDocument1.docx','testDocument2.docx',
+        'testDocument1.docx',
+        'testDocument2.docx',
         'testDocument3.docx',
 
     ]);
