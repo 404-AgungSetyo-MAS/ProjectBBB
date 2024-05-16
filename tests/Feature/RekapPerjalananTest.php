@@ -106,10 +106,32 @@ it('show the uploaded files', function() {
 // dd($perjalanan);
 
     Livewire::test(RekapPerjalanan::class)
-    ->assertOk()->assertSeeText([
+    ->assertOk()->assertSee([
         'testDocument1.docx',
         'testDocument2.docx',
         'testDocument3.docx',
 
+    ]);
+});
+
+
+it('Show format money', function() {
+    Perjalanan::factory()
+    ->for(
+        Mak::factory()
+    )
+    ->state([
+        'uang_harian' => 100_000,
+        'uang_transport' => 100_000,
+        'total_bayar_spj' => 100_000,
+    ])
+    ->create()
+    ;
+
+// dd($perjalanan);
+
+    Livewire::test(RekapPerjalanan::class)
+    ->assertOk()->assertSeeText([
+        Number::currency(100_000,' ')
     ]);
 });

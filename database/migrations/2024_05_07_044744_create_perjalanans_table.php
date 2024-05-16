@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('nama_pelaksana')->nullable();
             $table->string('kota_tujuan')->nullable();
             $table->date('tanggal_berangkat')->nullable();
-            $table->string('uang_harian')->nullable();
-            $table->string('uang_transport')->nullable();
-            $table->string('total_bayar_spj')->nullable();
+            $table->integer('uang_harian')->nullable();
+            $table->integer('uang_transport')->nullable();
+            $table->integer('total_bayar_spj')->nullable();
             $table->string('status')->nullable();
             $table->json('files')->nullable();
             $table->string('current_user');

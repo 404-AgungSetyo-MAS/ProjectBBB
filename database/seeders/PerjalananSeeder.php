@@ -17,7 +17,6 @@ class PerjalananSeeder extends Seeder
         Perjalanan::factory(5)
         ->for(
             Mak::factory()
-            ->state(['kode' => '1'])
         )
         ->state([
             'kode_st' => 'aa.99.99.9a.99.99.9999',

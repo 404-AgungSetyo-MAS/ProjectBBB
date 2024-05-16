@@ -39,9 +39,15 @@ class RekapPerjalanan extends Component implements HasForms, HasTable
                 TextColumn::make('nama_pelaksana'),
                 TextColumn::make('kota_tujuan'),
                 TextColumn::make('tanggal_berangkat'),
-                TextColumn::make('uang_harian'),
-                TextColumn::make('uang_transport'),
-                TextColumn::make('total_bayar_spj'),
+                TextColumn::make('uang_harian')
+                ->money('IDR')
+                ->numeric(),
+                TextColumn::make('uang_transport')
+                ->money('IDR')
+                ->numeric(),
+                TextColumn::make('total_bayar_spj')
+                ->money('IDR')
+                ->numeric(),
                 TextColumn::make('current_user'),
                 TextColumn::make('files'),
 

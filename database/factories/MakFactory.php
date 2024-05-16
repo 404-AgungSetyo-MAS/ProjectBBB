@@ -17,7 +17,7 @@ class MakFactory extends Factory
     public function definition(): array
     {
         return [
-            'kode' => fake()->word()
+            'kode' => fake()->numberBetween(1000,100000)
         ];
     }
 }
