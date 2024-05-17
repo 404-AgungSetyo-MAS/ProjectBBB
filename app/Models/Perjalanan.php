@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class Perjalanan extends Model
 {
@@ -28,6 +29,24 @@ class Perjalanan extends Model
     protected $casts = [
         'files' => 'json'
     ];
+
+    protected static function booted():void
+    {
+        // static::deleted(function (Perjalanan $perjalanan) {
+        //     foreach($perjalanan->files as $file) {
+        //         Storage::delete($file);
+        //     }
+        // });
+        // static::updating(function (Perjalanan $perjalanan) {
+
+        //     $deleteFiles = array_diff($perjalanan->getOriginal('files'), $perjalanan->files);
+
+        //     foreach($deleteFiles as $file) {
+        //         Storage::delete($file);
+        //     }
+        // });
+    }
+
 
     public function mak(): BelongsTo
     {

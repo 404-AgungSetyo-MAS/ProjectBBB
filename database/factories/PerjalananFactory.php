@@ -26,7 +26,7 @@ class PerjalananFactory extends Factory
             'uang_harian' => fake()->numberBetween(1000, 1000000),
             'uang_transport' => fake()->numberBetween(1000, 1000000),
             'total_bayar_spj' => fake()->numberBetween(1000, 1000000),
-            'status' => fake()->numberBetween(0,100),
+            'status' => fake()->word(),
             'files' => fake()->word(),
             'current_user' => fake()->name(),
         ];
