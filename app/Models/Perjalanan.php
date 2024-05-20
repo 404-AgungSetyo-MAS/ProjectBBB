@@ -32,19 +32,19 @@ class Perjalanan extends Model
 
     protected static function booted():void
     {
-        // static::deleted(function (Perjalanan $perjalanan) {
-        //     foreach($perjalanan->files as $file) {
-        //         Storage::delete($file);
-        //     }
-        // });
-        // static::updating(function (Perjalanan $perjalanan) {
+        static::deleted(function (Perjalanan $perjalanan) {
+            foreach($perjalanan->files as $file) {
+                Storage::delete($file);
+            }
+        });
+        static::updating(function (Perjalanan $perjalanan) {
 
-        //     $deleteFiles = array_diff($perjalanan->getOriginal('files'), $perjalanan->files);
+            $filesToDelete = array_diff($perjalanan->getOriginal('files'), $perjalanan->files);
 
-        //     foreach($deleteFiles as $file) {
-        //         Storage::delete($file);
-        //     }
-        // });
+            foreach($filesToDelete as $file) {
+                Storage::delete($file);
+            }
+        });
     }
 
 

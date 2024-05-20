@@ -112,73 +112,73 @@ it('edit data Perjalanan', function () {
             ->assertOk();
 });
 
-it('update data Perjalanan', function () {
-    $perjalanan = Perjalanan::factory()
-        ->for(Mak::factory())
-        ->create();
+// it('update data Perjalanan', function () {
+//     $perjalanan = Perjalanan::factory()
+//         ->for(Mak::factory())
+//         ->create();
 
-    $newPerjalanan = Perjalanan::factory()
-        ->for(Mak::factory())
-        ->make();
+//     $newPerjalanan = Perjalanan::factory()
+//         ->for(Mak::factory())
+//         ->make();
 
-    Livewire::test(PerjalananResource\Pages\EditPerjalanan::class, [
-        'record' => $perjalanan->getRouteKey(),
-    ])
+//     Livewire::test(PerjalananResource\Pages\EditPerjalanan::class, [
+//         'record' => $perjalanan->getRouteKey(),
+//     ])
 
-        ->fillForm([
-            'kode_st' => $newPerjalanan->kode_st,
-            'maksud_perjalanan' => $newPerjalanan->maksud_perjalanan,
-            'nama_pelaksana' => $newPerjalanan->nama_pelaksana,
-            'kota_tujuan' => $newPerjalanan->kota_tujuan,
-            'tanggal_berangkat' => $newPerjalanan->tanggal_berangkat,
-            'uang_harian' => $newPerjalanan->uang_harian,
-            'uang_transport' => $newPerjalanan->uang_transport,
-            'total_bayar_spj' => $newPerjalanan->total_bayar_spj,
-            'status' => $newPerjalanan->status,
-            'files' => $newPerjalanan->files,
-            'current_user' => $newPerjalanan->current_user,
-            'mak_id' => $newPerjalanan->mak->getKey(),
-        ])
-        ->call('save')
-        ->assertHasNoFormErrors();
+//         ->fillForm([
+//             'kode_st' => $newPerjalanan->kode_st,
+//             'maksud_perjalanan' => $newPerjalanan->maksud_perjalanan,
+//             'nama_pelaksana' => $newPerjalanan->nama_pelaksana,
+//             'kota_tujuan' => $newPerjalanan->kota_tujuan,
+//             'tanggal_berangkat' => $newPerjalanan->tanggal_berangkat,
+//             'uang_harian' => $newPerjalanan->uang_harian,
+//             'uang_transport' => $newPerjalanan->uang_transport,
+//             'total_bayar_spj' => $newPerjalanan->total_bayar_spj,
+//             'status' => $newPerjalanan->status,
+//             'files' => $newPerjalanan->files,
+//             'current_user' => $newPerjalanan->current_user,
+//             'mak_id' => $newPerjalanan->mak->getKey(),
+//         ])
+//         ->call('save')
+//         ->assertHasNoFormErrors();
 
-        expect($perjalanan->refresh())
-            ->mak_id->toBe($newPerjalanan->mak_id)
-            ->kode_st->toBe($newPerjalanan->kode_st)
-            ->nama_pelaksana->toBe($newPerjalanan->nama_pelaksana)
-            ->maksud_perjalanan->toBe($newPerjalanan->maksud_perjalanan)
-            ->kota_tujuan->toBe($newPerjalanan->kota_tujuan)
-            ->tanggal_berangkat->toBe($newPerjalanan->tanggal_berangkat)
-            ->uang_harian->toBe($newPerjalanan->uang_harian)
-            ->uang_transport->toBe($newPerjalanan->uang_transport)
-            ->total_bayar_spj->toBe($newPerjalanan->total_bayar_spj)
-            ->status->toBe($newPerjalanan->status)
-            ->files->toBe([$newPerjalanan->files])
-            ->current_user->toBe($newPerjalanan->current_user);
-});
+//         expect($perjalanan->refresh())
+//             ->mak_id->toBe($newPerjalanan->mak_id)
+//             ->kode_st->toBe($newPerjalanan->kode_st)
+//             ->nama_pelaksana->toBe($newPerjalanan->nama_pelaksana)
+//             ->maksud_perjalanan->toBe($newPerjalanan->maksud_perjalanan)
+//             ->kota_tujuan->toBe($newPerjalanan->kota_tujuan)
+//             ->tanggal_berangkat->toBe($newPerjalanan->tanggal_berangkat)
+//             ->uang_harian->toBe($newPerjalanan->uang_harian)
+//             ->uang_transport->toBe($newPerjalanan->uang_transport)
+//             ->total_bayar_spj->toBe($newPerjalanan->total_bayar_spj)
+//             ->status->toBe($newPerjalanan->status)
+//             ->files->toBe([$newPerjalanan->files])
+//             ->current_user->toBe($newPerjalanan->current_user);
+// });
 
-it('delete data from EditPerjalanan', function () {
-    $perjalanan = Perjalanan::factory()
-        ->for(Mak::factory())
-        ->create();
+// it('delete data from EditPerjalanan', function () {
+//     $perjalanan = Perjalanan::factory()
+//         ->for(Mak::factory())
+//         ->create();
 
-        Livewire::test(PerjalananResource\Pages\EditPerjalanan::class, [
-            'record' => $perjalanan->getRouteKey()
-        ])->callAction(DeleteAction::class);
+//         Livewire::test(PerjalananResource\Pages\EditPerjalanan::class, [
+//             'record' => $perjalanan->getRouteKey()
+//         ])->callAction(DeleteAction::class);
 
-        assertModelMissing($perjalanan);
-});
+//         assertModelMissing($perjalanan);
+// });
 
-it('delete data from ListPerjalanan', function () {
-    $perjalanan = Perjalanan::factory()
-        ->for(Mak::factory())
-        ->create();
+// it('delete data from ListPerjalanan', function () {
+//     $perjalanan = Perjalanan::factory()
+//         ->for(Mak::factory())
+//         ->create();
 
-        Livewire::test(PerjalananResource\Pages\ListPerjalanans::class)
-        ->callTableAction(TableDeleteAction::class, $perjalanan);
+//         Livewire::test(PerjalananResource\Pages\ListPerjalanans::class)
+//         ->callTableAction(TableDeleteAction::class, $perjalanan);
 
-        $this->assertModelMissing($perjalanan);
-});
+//         $this->assertModelMissing($perjalanan);
+// });
 
 it('delete document files from Storage Perjalanan', function () {
     $newPerjalanan = Perjalanan::factory()

@@ -2,6 +2,7 @@
 use App\Models\Mak;
 use App\Models\Perjalanan;
 use Illuminate\Http\UploadedFile;
+use function Pest\Laravel\assertDatabaseMissing;
 
 test('perjalanan memiliki MAK', function () {
     // expect(true)->toBeTrue();
@@ -16,6 +17,7 @@ test('perjalanan memiliki MAK', function () {
 });
 
 it('deletes Files dari perjalanan setelah update', function () {
+
     Storage::fake('documents');
 
     $files = ['doctest1.docx', 'doctest2.docx'];
@@ -34,6 +36,11 @@ it('deletes Files dari perjalanan setelah update', function () {
 
         array_shift($files);
 
+        // $perjalanan->files = $files;
+
+        $deletedFiles = array_diff($perjalanan->getOriginal('files'), $perjalanan->files);
+
         $perjalanan->save();
-        $deletedDocuments = array_diff($perjalanan->getOriginal('documents'), $perjalanan->documents);
-});
+
+        storage::disk('documents')->assertMissing($deletedFiles);
+    });
